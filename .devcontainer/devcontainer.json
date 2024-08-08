@@ -1,0 +1,13 @@
+{
+    "name": "threat_classification",
+    "dockerFile": "../Dockerfile",
+    "settings": { 
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "forwardPorts": [8000],
+    "extensions": [
+        "ms-python.python",
+        "ms-vscode.vscode-docker"
+    ],
+    "postCreateCommand": "pip install -r requirements.txt"
+}

@@ -1,0 +1,7 @@
+pandas
+plotly
+nbformat>=4.2.0
+phonenumbers
+openai
+scikit-learn
+umap-learn
