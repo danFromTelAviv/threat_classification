@@ -1,42 +1,58 @@
-In this repo you can find the code used to analyze and cluster scam data.
+# Scam Data Analysis and Clustering
 
-The general flow is:
-analyze.ipynb - incluides basic data analysis and some minor examples of data normalization. 
-create_embeddings.py - used to call openai's embedding model 
-cluster.ipynb - uses classical clustering methods and presents the data on a 2d dimentionally reduced map.
-exctract_chacteristics.py - used for turning the scam description into structured data. 
-define_cluster_characteristics.py - uses a contrastive prompt to generate the defintion of each cluster. 
+This repository contains the code for analyzing and clustering scam data.
 
+## Workflow Overview
 
-comments:
-It is recommended to run everything within the docker defined by the dockerfile, requirements.txt and devcontainer.json (on vs code)
+1. **`analyze.ipynb`**  
+   - Performs basic data analysis.
+   - Includes minor examples of data normalization.
 
-Notice that embeddings and structured data is saved to the folders: embeddings, embeddings 
+2. **`create_embeddings.py`**  
+   - Calls OpenAI's embedding model to generate embeddings for the data.
 
-The code will generate a cluster mapping saved as a csv. 
+3. **`cluster.ipynb`**  
+   - Applies classical clustering methods.
+   - Presents the data on a 2D dimensionally reduced map.
 
-The code will create a cluster_charactersitics.csv which gives a few examples and the cluster's description - as an alternative to a UI for now. 
-*some additonal extensions/installs for jupyter may be required
+4. **`extract_characteristics.py`**  
+   - Converts scam descriptions into structured data.
 
-the code assumes the enviroment variable "OPENAI_API_KEY" is set. 
+5. **`define_cluster_characteristics.py`**  
+   - Uses a contrastive prompt to define the characteristics of each cluster.
 
-example launch.json:
+## Setup and Usage
+
+- It is recommended to run the code within a Docker environment defined by the `Dockerfile`, `requirements.txt`, and `devcontainer.json` (if using VS Code).
+- Ensure that the environment variable `OPENAI_API_KEY` is set before running the code.
+
+### Output
+
+- Embeddings and structured data will be saved in the `embeddings/` directory.
+- A cluster mapping will be generated and saved as a CSV file.
+- A `cluster_characteristics.csv` file will be created, providing examples and descriptions of each cluster as an alternative to a UI for now.
+
+### Additional Notes
+
+- Some additional extensions or installs for Jupyter may be required.
+- The code assumes the environment variable `OPENAI_API_KEY` is set.
+
+## Example `launch.json`
+
+```json
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Python: Current File",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "env": {
-                "OPENAI_API_KEY": "xxxxxxx",
-            },
-            "justMyCode": true
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "env": {
+        "OPENAI_API_KEY": "xxxxxxx"
+      },
+      "justMyCode": true
+    }
+  ]
 }
