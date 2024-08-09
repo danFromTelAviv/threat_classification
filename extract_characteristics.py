@@ -67,6 +67,8 @@ def process_row(row):
 
 
 if __name__ == "__main__":
-    df = pd.read_csv("/workspaces/threat_classification/scam_reports_sample_10000.csv")
+    df = pd.read_csv("/workspaces/threat_classification/scam_reports_sample_10000.csv").reset_index()
+    mapping_df = pd.read_csv("/workspaces/threat_classification/clusters_mapping.csv")
+    df = df.merge(mapping_df, on="index", how="left")
+
     rows = process_map(process_row, df.reset_index().to_dict('records'), max_workers=20, chunksize=10)
-    pd.DataFrame(rows).to_csv('scam_reports_sample_10000_structured.csv', index=False)

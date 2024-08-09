@@ -30,10 +30,4 @@ def process_row(row):
 
 rows = process_map(process_row, df.reset_index().to_dict('records'), max_workers=5, chunksize=10)
 
-# for row in  df.to_dict('records')[:100]:
-#     row = process_row(row)
-#     hi = 5
-
-pd.DataFrame(rows).to_csv('scam_reports_sample_10000_embeddings.csv', index=False)
-
 hi = 5
