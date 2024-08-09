@@ -23,11 +23,11 @@ def get_embedding(text: str, model="text-embedding-3-small", **kwargs) -> List[f
 def process_row(row):
     try:
         row['embedding'] = get_embedding(row['description'])
-        np.save(f"embeddings/{row['index']}.json",  np.array(row['embedding']))
+        np.save(f"embeddings/{row['index']}.npy",  np.array(row['embedding']))
     except:
         pass
     return row
 
-rows = process_map(process_row, df.reset_index().to_dict('records'), max_workers=5, chunksize=10)
+rows = process_map(process_row, df.reset_index().to_dict('records'), max_workers=20, chunksize=10)
 
 hi = 5
