@@ -5,3 +5,4 @@ phonenumbers
 openai
 scikit-learn
 umap-learn
+tqdm
